@@ -8,12 +8,17 @@
 </head>
 <body>
   <header>
-    <h1>Modern Box House 10x10</h1>
-    <p>ลากเพื่อหมุน • เลื่อนเพื่อซูม • คลิกปุ่มเพื่อเปิด/ปิดการหมุนอัตโนมัติ</p>
-    <button id="rotate">Auto Rotate: ON</button>
+    <h1>Modern Box House 10 x 10 m</h1>
+    <p>ลากเมาส์เพื่อหมุน • เลื่อนเพื่อซูม • โมเดลแนวคิดสำหรับ Blender / BIM / BOQ</p>
+    <div class="controls">
+      <button id="reset">Reset View</button>
+      <button id="rotate">Auto Rotate: OFF</button>
+      <button id="roof">Hide Roof</button>
+      <button id="explode">Exploded View</button>
+    </div>
   </header>
   <main>
-    <canvas id="view"></canvas>
+    <canvas id="view" aria-label="Interactive 3D model of a modern 10 by 10 metre house"></canvas>
   </main>
   <script type="module" src="app.js"></script>
 </body>
