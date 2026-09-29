@@ -1,0 +1,43 @@
+name: Build 3D Model and BOQ
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, feature/modern-house-10x10 ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Export concept BOQ
+        run: python boq/export_boq.py --spec spec/house_10x10.json --output dist/boq.csv
+
+      - name: Install Blender
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender
+
+      - name: Build Blender model
+        run: blender --background --python blender/build_house.py -- --spec spec/house_10x10.json --output-dir dist
+
+      - name: Prepare web asset
+        run: |
+          mkdir -p web/assets
+          cp dist/house_10x10.glb web/assets/house_10x10.glb
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: modern-house-10x10
+          path: |
+            dist/house_10x10.blend
+            dist/house_10x10.glb
+            dist/boq.csv
+            web/
