@@ -1,0 +1,35 @@
+{
+  "name": "Modern Box House 10x10",
+  "description": "Single-storey 10 m x 10 m concept house for Blender/BIM/BOQ teaching workflow",
+  "units": "m",
+  "footprint": { "width_m": 10.0, "depth_m": 10.0 },
+  "storeys": 1,
+  "floor_height_m": 3.0,
+  "slab_thickness_m": 0.15,
+  "wall_thickness_m": 0.15,
+  "parapet_height_m": 0.45,
+  "structure": {
+    "column_size_m": 0.30,
+    "beam_width_m": 0.30,
+    "beam_depth_m": 0.40,
+    "footing_width_m": 1.00,
+    "footing_depth_m": 1.00,
+    "footing_thickness_m": 0.40
+  },
+  "rooms": [
+    { "name": "Bedroom 1", "width_m": 3.5, "depth_m": 3.0 },
+    { "name": "Bedroom 2", "width_m": 3.5, "depth_m": 3.0 },
+    { "name": "Bathroom 1", "width_m": 2.0, "depth_m": 1.8 },
+    { "name": "Bathroom 2", "width_m": 2.0, "depth_m": 1.8 },
+    { "name": "Laundry / Storage", "width_m": 1.5, "depth_m": 2.0 }
+  ],
+  "terrace": { "width_m": 6.8, "depth_m": 2.0 },
+  "materials": {
+    "wall": "White plaster",
+    "accent": "Timber cladding",
+    "frame": "Dark aluminium",
+    "floor": "Porcelain tile",
+    "structure": "Reinforced concrete"
+  },
+  "design_status": "Concept / teaching only - not for construction"
+}
