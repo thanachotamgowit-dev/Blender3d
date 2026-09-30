@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Modern Box House 10x10 - 3D Viewer</title>
+  <title>NPT Triangle - Structural 3D Viewer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Modern Box House 10 x 10 m</h1>
-    <p>ลากเมาส์เพื่อหมุน • เลื่อนเพื่อซูม • โมเดลแนวคิดสำหรับ Blender / BIM / BOQ</p>
+    <h1>NPT Triangle Structural Viewer</h1>
+    <p>เปิดโมเดล GLB จาก GitHub หรือเลือกไฟล์จากเครื่องเพื่อหมุน ซูม และตรวจโมเดลโครงสร้าง</p>
     <div class="controls">
+      <label class="file-btn">เลือกไฟล์ GLB<input id="file" type="file" accept=".glb,model/gltf-binary"></label>
+      <button id="load-default">โหลดโมเดลบนเว็บ</button>
       <button id="reset">Reset View</button>
       <button id="rotate">Auto Rotate: OFF</button>
-      <button id="roof">Hide Roof</button>
-      <button id="explode">Exploded View</button>
     </div>
+    <div id="status">ยังไม่ได้โหลดโมเดล</div>
   </header>
   <main>
-    <canvas id="view" aria-label="Interactive 3D model of a modern 10 by 10 metre house"></canvas>
+    <canvas id="view" aria-label="NPT Triangle structural 3D model viewer"></canvas>
   </main>
   <script type="module" src="app.js"></script>
 </body>
