@@ -1,0 +1,40 @@
+{
+  "project": {
+    "name": "TM50 pd7",
+    "source": "TM50 pd7.skp",
+    "units": "m",
+    "status": "REFERENCE_MODEL_UNVERIFIED"
+  },
+  "column_types": [
+    {"name": "C1", "width_mm": 800, "depth_mm": 800, "match": "M_Rectangular Column:C1 800x800"},
+    {"name": "C2", "width_mm": 600, "depth_mm": 800, "match": "M_Rectangular Column:C2 600x800"},
+    {"name": "C3", "width_mm": 250, "depth_mm": 800, "match": "M_Rectangular Column:C3 250x800"},
+    {"name": "C4", "width_mm": 250, "depth_mm": 1200, "match": "M_Rectangular Column:C4 250x1200"},
+    {"name": "C5", "width_mm": 250, "depth_mm": 1000, "match": "M_Rectangular Column:C5 250x1000"}
+  ],
+  "beam_types": [
+    {"name": "B_UNVERIFIED_01", "width_mm": 300, "depth_mm": 600, "match": "M_Concrete-Rectangular Beam:300 x 600mm"}
+  ],
+  "slab_types": [
+    {"name": "F1", "match": "Floor:F1", "thickness_mm": null},
+    {"name": "INSITU_225", "match": "Floor:Insitu Concrete 225mm", "thickness_mm": 225}
+  ],
+  "classification_rules": [
+    {"contains": "IfcColumn", "target": "Column", "confidence": "high"},
+    {"contains": "M_Rectangular Column:", "target": "Column", "confidence": "high"},
+    {"contains": "IfcBeam", "target": "Beam", "confidence": "high"},
+    {"contains": "M_Concrete-Rectangular Beam:", "target": "Beam", "confidence": "high"},
+    {"contains": "IfcSlab - Floor:", "target": "Slab", "confidence": "high"},
+    {"contains": "Floor:Insitu Concrete 225mm", "target": "Slab", "confidence": "high"},
+    {"contains": "IfcSlab - Precast Stair:", "target": "StairLandingSlab", "confidence": "high"},
+    {"contains": "IfcWallStandardCase", "target": "Wall", "confidence": "review_required"},
+    {"contains": "Basic Wall:", "target": "Wall", "confidence": "review_required"},
+    {"contains": "Partition", "target": "NonStructuralWallCandidate", "confidence": "review_required"}
+  ],
+  "qa": {
+    "verify_against_structural_drawings": true,
+    "do_not_infer_reinforcement": true,
+    "do_not_infer_material_strength": true,
+    "do_not_use_for_construction_without_engineer_review": true
+  }
+}
