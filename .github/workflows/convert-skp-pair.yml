@@ -1,0 +1,48 @@
+name: Convert SKP to GLB and IFC
+
+on:
+  workflow_dispatch:
+    inputs:
+      skp_path:
+        description: "Repository path to the SKP file (Git LFS supported)"
+        required: true
+        default: "input/TM50_pd7.skp"
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout including Git LFS
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install conversion dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-conversion.txt
+
+      - name: Convert SKP to paired outputs
+        run: |
+          python tools/convert_skp_pair.py "${{ inputs.skp_path }}" --out-dir dist/tm50_pd7
+
+      - name: List outputs
+        run: |
+          ls -lh dist/tm50_pd7
+          test -s dist/tm50_pd7/TM50_pd7.glb
+          test -s dist/tm50_pd7/TM50_pd7.ifc
+
+      - name: Upload GLB and IFC artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tm50-pd7-glb-ifc
+          path: |
+            dist/tm50_pd7/*.glb
+            dist/tm50_pd7/*.ifc
+            dist/tm50_pd7/*.json
+          if-no-files-found: error
