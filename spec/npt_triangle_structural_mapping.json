@@ -1,0 +1,33 @@
+{
+  "project": {
+    "name": "NPT Triangle concept ps00",
+    "source": "NPT Triangle concept ps00.skp",
+    "units": "m",
+    "status": "REFERENCE_MODEL_UNVERIFIED"
+  },
+  "classification_rules": [
+    {"contains": "BEAM", "target": "Beam", "confidence": "high"},
+    {"contains": "S-FLOOR", "target": "Slab", "confidence": "high"},
+    {"contains": "FLOOR LEVEL", "target": "LevelReference", "confidence": "medium"},
+    {"contains": "PLATFORM-ROOF", "target": "RoofPlatform", "confidence": "medium"},
+    {"contains": "ROOF POST-PLAN", "target": "RoofPostCandidate", "confidence": "review_required"},
+    {"contains": "Structure Gage", "target": "StructuralReference", "confidence": "medium"},
+    {"contains": "WALL", "target": "WallCandidate", "confidence": "review_required"},
+    {"contains": "AR_floor", "target": "ArchitecturalFloor", "confidence": "exclude_by_default"},
+    {"contains": "AR_wall", "target": "ArchitecturalWall", "confidence": "exclude_by_default"},
+    {"contains": "AR_stair", "target": "ArchitecturalStair", "confidence": "exclude_by_default"}
+  ],
+  "boq": {
+    "beam": ["count", "length_m", "volume_m3"],
+    "column_post": ["count", "length_m", "volume_m3"],
+    "slab": ["area_m2", "volume_m3"],
+    "structural_wall": ["area_m2", "volume_m3"],
+    "roof_platform": ["area_m2", "volume_m3"]
+  },
+  "qa": {
+    "verify_member_dimensions": true,
+    "verify_structural_walls": true,
+    "do_not_infer_reinforcement": true,
+    "do_not_use_for_construction_without_engineer_review": true
+  }
+}
