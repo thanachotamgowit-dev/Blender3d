@@ -1,0 +1,22 @@
+{
+  "project": {
+    "name": "SketchUp Structural Reconstruction",
+    "units": "m"
+  },
+  "storeys": [
+    {"name": "Foundation", "elevation": -1.0},
+    {"name": "Ground Floor", "elevation": 0.0}
+  ],
+  "rules": [
+    {"match_name_contains": ["footing", "ฐานราก"], "class": "Footing"},
+    {"match_name_contains": ["foundation beam", "คานคอดิน"], "class": "FoundationBeam"},
+    {"match_name_contains": ["column", "เสา"], "class": "Column"},
+    {"match_name_contains": ["beam", "คาน"], "class": "Beam"},
+    {"match_name_contains": ["slab", "พื้น"], "class": "Slab"},
+    {"match_name_contains": ["structural wall", "ผนังโครงสร้าง"], "class": "StructuralWall"}
+  ],
+  "defaults": {
+    "material": "UNVERIFIED",
+    "engineering_status": "REFERENCE_ONLY"
+  }
+}
